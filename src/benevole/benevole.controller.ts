@@ -24,7 +24,7 @@ export class BenevoleController{
         return this.benevoleService.findOne(id)
     }
 
-    @Put('update/:id')
+    @Put(':id/update')
     update(@Param('id') id: number, @Body() dto : BenevoleDto){
         return this.benevoleService.updateOne(id,dto);
     }

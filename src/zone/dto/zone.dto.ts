@@ -5,19 +5,11 @@ import { IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 
 
-export class BenevoleDto {
+export class ZoneDto {
 
 
     @IsString()
     @IsNotEmpty()
-    prenom: string;
-    
-    @IsString()
-    @IsNotEmpty()
-    nom: string;
-    
-    @IsEmail()
-    @IsNotEmpty()
-    email: string;
+    label: string;
     
 }
