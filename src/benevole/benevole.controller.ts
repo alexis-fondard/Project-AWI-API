@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, ParseIntPipe, Post, Get, Req } from '@nestjs/common';
+import { Body, Controller, ParseIntPipe, Post, Get, Req, Put, Param, Delete } from '@nestjs/common';
 import { Request } from 'express';
 import { BenevoleService } from './benevole.service';
 import { BenevoleDto } from './dto';
@@ -15,8 +15,22 @@ export class BenevoleController{
     }
 
     @Get('')
-    findAll(@Body() dto : BenevoleDto){
-        
+    findAll(){
         return this.benevoleService.findAll();
+    }
+
+    @Get(':id')
+    find(@Param('id') id: number){
+        return this.benevoleService.findOne(id)
+    }
+
+    @Put('update/:id')
+    update(@Param('id') id: number, @Body() dto : BenevoleDto){
+        return this.benevoleService.updateOne(id,dto);
+    }
+
+    @Delete(':id/delete')
+    delete(@Param('id') id: number){
+        return this.benevoleService.deleteOne(id);
     }
 }

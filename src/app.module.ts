@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { BenevoleModule } from './benevole/benevole.module';
 import { JeuModule } from './jeu/jeu.module';
+import { ZoneModule } from './zone/zone.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { JeuModule } from './jeu/jeu.module';
     PrismaModule,
     BenevoleModule,
     JeuModule,
+    ZoneModule,
   ],
 })
 export class AppModule {}
