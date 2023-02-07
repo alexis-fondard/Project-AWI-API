@@ -10,13 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum GameType {
-  ENFANT
-  FAMILLE
-  AMBIANCE
-  INITIE
-  EXPERT
-}
+
 
 model User {
   id Int @id @default(autoincrement())
@@ -38,13 +32,58 @@ model Benevole {
   nom String
   email String @unique
 
+  zones Benevole_Zone[]
+
   @@map("benevoles")
 }
 
 model Jeu {
   id Int @id @default(autoincrement())
   nom String
-  type GameType
+  label_type_jeu String
+  type_jeu Type_Jeu @relation(fields:[label_type_jeu],references:[label])
+  jeu_zone Jeu_Zone[]
 
   @@map("jeux")
 }
+
+model Type_Jeu {
+  label String @id
+
+  jeu Jeu[]
+
+  @@map("type_jeu")
+}
+
+model Zone {
+  label String @id
+  benevoles Benevole_Zone[]
+  jeu Jeu_Zone[]
+
+  @@map("zones")
+}
+
+model Jeu_Zone {
+  jeu Jeu @relation(fields: [id_jeu], references: [id])
+  id_jeu Int
+  zone Zone @relation(fields: [label_zone], references: [label])
+  label_zone String 
+
+  @@id([label_zone,id_jeu])
+
+  @@map("jeu_zone")
+}
+
+model Benevole_Zone {
+  benevole Benevole @relation(fields: [id_benevole], references: [id])
+  id_benevole Int
+  zone Zone @relation(fields: [label_zone], references: [label])
+  label_zone String 
+  debut DateTime
+  fin DateTime
+
+  @@id([id_benevole,label_zone,debut])
+
+  @@map("benevole_zone")
+}
+
