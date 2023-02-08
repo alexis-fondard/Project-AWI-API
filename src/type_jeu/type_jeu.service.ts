@@ -7,9 +7,9 @@ export class TypeJeuService {
     constructor(private prisma: PrismaService) {}
 
     async create(dto: TypeJeuDto) {
-        const typeJeu = await this.prisma.type_jeu.create({
+        const typeJeu = await this.prisma.type_Jeu.create({
             data: {
-                nom: dto.label,
+                label: dto.label,
             },
         });
         //return to user the saved typeJeu
@@ -17,39 +17,39 @@ export class TypeJeuService {
     }
 
     async findAll(){
-        const typeJeux = await this.prisma.type_jeu.findMany({});
+        const typeJeux = await this.prisma.type_Jeu.findMany({});
         return typeJeux;
     }
 
-    async findOne(id: number){
-        const typeJeu = await this.prisma.type_jeu.findFirst({
+    async findOne(label: string){
+        const typeJeu = await this.prisma.type_Jeu.findFirst({
             where:{
-                id: id
+                label: label,
             }
         })
     }
 
-    async updateOne(id: number, dto: TypeJeuDto){
+    async updateOne(label: string, dto: TypeJeuDto){
         console.log(dto)
 
-        if(id == null){
+        if(label == null){
             throw new ForbiddenException('Credentials Not According to DTO');
         }
-        const typeJeu = await this.prisma.type_jeu.update({
+        const typeJeu = await this.prisma.type_Jeu.update({
             where: {
-                id: Number(id)
+                label: label,
             },
             data:{
-                nom: dto.label,
+                label: dto.label,
             },
         });
         return typeJeu;
     }
 
-    async deleteOne(id: number){
-        const typeJeu = await this.prisma.type_jeu.delete({
+    async deleteOne(label: string){
+        const typeJeu = await this.prisma.type_Jeu.delete({
             where:{
-                id: id
+                label: label
             }
         });
         return typeJeu;

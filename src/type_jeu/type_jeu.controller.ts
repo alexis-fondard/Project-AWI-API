@@ -19,18 +19,18 @@ export class TypeJeuController{
         return this.typeJeuService.findAll();
     }
 
-    @Get(':id')
-    find(@Param('id') id: number){
-        return this.typeJeuService.findOne(id)
+    @Get(':label')
+    find(@Param('label') label: string){
+        return this.typeJeuService.findOne(label)
     }
 
-    @Put('update/:id')
-    update(@Param('id') id: number, @Body() dto : TypeJeuDto){
-        return this.typeJeuService.updateOne(id,dto);
+    @Put('update/:label')
+    update(@Param('label') label: string, @Body() dto : TypeJeuDto){
+        return this.typeJeuService.updateOne(label, dto);
     }
 
-    @Delete(':id/delete')
-    delete(@Param('id') id: number){
-        return this.typeJeuService.deleteOne(id);
+    @Delete(':label/delete')
+    delete(@Param('label') label: string){
+        return this.typeJeuService.deleteOne(label);
     }
 }
