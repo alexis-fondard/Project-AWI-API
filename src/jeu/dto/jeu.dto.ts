@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { TypeJeu } from "../../type_jeu/dto/type_jeu.dto";
+import { TypeJeuDto } from "../../type_jeu/dto/type_jeu.dto";
 
 export class JeuDto {
 
@@ -7,5 +7,5 @@ export class JeuDto {
     @IsNotEmpty()
     nom: string;
 
-    idType: TypeJeu;
+    type_jeu: TypeJeuDto;
 }
