@@ -8,6 +8,7 @@ export class BenevoleService {
   constructor(private prisma: PrismaService) {}
 
   async create(dto: BenevoleDto) {
+    //TODO: TRY CATCH (RIGHT ERROR)
     const benevole = await this.prisma.benevole.create({
       data: {
         prenom: dto.prenom,
@@ -30,49 +31,50 @@ export class BenevoleService {
     }*/
   }
 
-  async findAll(){
+  async findAll() {
+    //TODO: TRY CATCH (RIGHT ERROR)
     const benevoles = await this.prisma.benevole.findMany({});
     return benevoles;
   }
 
-  async findOne(id: number){
+  async findOne(id: number) {
+    //TODO: TRY CATCH (RIGHT ERROR)
     const benevole = await this.prisma.benevole.findFirst({
-      where:{
-        id: id
-      }
-    })
+      where: {
+        id: Number(id),
+      },
+    });
+    return benevole;
   }
 
-  async updateOne(id: number, dto: BenevoleDto){
-    console.log(dto)
-
-    if(id == null){
+  async updateOne(id: number, dto: BenevoleDto) {
+    //TODO: TRY CATCH (RIGHT ERROR)
+    if (id == null) {
       throw new ForbiddenException('Credentials Not According to DTO');
     }
     const benevole = await this.prisma.benevole.update({
       where: {
-        id: Number(id)
+        id: Number(id),
       },
-      data:{
+      data: {
         prenom: dto.prenom,
         nom: dto.nom,
-        email: dto.email
+        email: dto.email,
       },
-      
-    })
-    return benevole 
+    });
+    return benevole;
   }
 
-
-  async deleteOne(id: number){
-    try{
+  async deleteOne(id: number) {
+    //TODO: TRY CATCH (RIGHT ERROR)
+    try {
       const benevole = await this.prisma.benevole.delete({
-        where:{
-          id: id
-        }
-      })
-      return benevole
-    }catch(error){
+        where: {
+          id: Number(id),
+        },
+      });
+      return benevole;
+    } catch (error) {
       //TODO
       //PERSONALISATION DES ERREURS
       throw new ForbiddenException('TO DO IMPLEMENT RIGHT ERROR');
@@ -85,6 +87,5 @@ export class BenevoleService {
       throw error;
       */
     }
-    
   }
 }
