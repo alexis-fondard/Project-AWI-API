@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { BenevoleModule } from './benevole/benevole.module';
 import { JeuModule } from './jeu/jeu.module';
 import { ZoneModule } from './zone/zone.module';
+import { BenevoleZoneModule } from './benevole_zone/benevole_zone.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ZoneModule } from './zone/zone.module';
     BenevoleModule,
     JeuModule,
     ZoneModule,
+    BenevoleZoneModule,
   ],
 })
 export class AppModule {}
