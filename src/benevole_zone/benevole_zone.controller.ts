@@ -13,6 +13,11 @@ export class BenevoleZoneController {
     return this.benevoleZoneService.getAll();
   }
 
+  @Get(':id/affectations')
+  getAllAffectationsOfABenevole(@Param('id') id: number) {
+    return this.benevoleZoneService.getAllAffectationOfABenevole(id);
+  }
+
   @Get(':label/benevoles')
   getAllBenevolesOfAZone(@Param('label') label: string) {
     return this.benevoleZoneService.getAllBenevolesOfAZone(label);

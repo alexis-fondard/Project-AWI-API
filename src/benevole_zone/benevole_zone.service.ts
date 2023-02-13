@@ -33,11 +33,22 @@ export class BenevoleZoneService {
       },
     });
     return zones;
-    //return 'must do it';
   }
 
   async getAll() {
     const benevoles_zones = await this.prisma.benevole_Zone.findMany({});
+    return benevoles_zones;
+  }
+
+  async getAllAffectationOfABenevole(string_id: number) {
+    const id = Number(string_id);
+
+    const benevoles_zones = await this.prisma.benevole_Zone.findMany({
+      where: {
+        id_benevole: id,
+      },
+    });
+
     return benevoles_zones;
   }
 

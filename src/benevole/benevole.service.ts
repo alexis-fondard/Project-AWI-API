@@ -9,18 +9,16 @@ export class BenevoleService {
 
   async create(dto: BenevoleDto) {
     //TODO: TRY CATCH (RIGHT ERROR)
-    const benevole = await this.prisma.benevole.create({
-      data: {
-        prenom: dto.prenom,
-        nom: dto.nom,
-        email: dto.email,
-      },
-    });
-    //return to user the saved benevole
-    return benevole;
-
-    /* try {
-      
+    try {
+      const benevole = await this.prisma.benevole.create({
+        data: {
+          prenom: dto.prenom,
+          nom: dto.nom,
+          email: dto.email,
+        },
+      });
+      //return to user the saved benevole
+      return benevole;
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         if (error.code === 'P2002') {
@@ -28,7 +26,7 @@ export class BenevoleService {
         }
       }
       throw error;
-    }*/
+    }
   }
 
   async findAll() {
