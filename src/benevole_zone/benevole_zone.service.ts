@@ -103,6 +103,7 @@ export class BenevoleZoneService {
   async createAffecationOfABenevole(dto: BenevoleZoneDTO) {
     dto.date_debut = new Date(dto.date_debut);
     dto.date_fin = new Date(dto.date_fin);
+    console.log(dto);
 
     if (await this.isAlreadyTaken(dto.date_debut, dto.date_fin, dto)) {
       throw new ForbiddenException(
@@ -171,7 +172,7 @@ export class BenevoleZoneService {
   }
 
   async isAlreadyTaken(date_debut: Date, date_fin: Date, dto: BenevoleZoneDTO) {
-    const already_benevoles = await this.prisma.benevole_Zone.findMany({
+    const already_benevoles = await this.prisma.benevole_Zone.count({
       where: {
         OR: [
           {
@@ -212,6 +213,6 @@ export class BenevoleZoneService {
       },
     });
 
-    return already_benevoles.length != 0;
+    return already_benevoles != 0;
   }
 }
