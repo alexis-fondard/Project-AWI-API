@@ -36,7 +36,14 @@ export class BenevoleZoneService {
   }
 
   async getAll() {
-    const benevoles_zones = await this.prisma.benevole_Zone.findMany({});
+    const benevoles_zones = await this.prisma.benevole_Zone.findMany({
+      select: {
+        benevole: true,
+        zone: true,
+        debut: true,
+        fin: true,
+      },
+    });
     return benevoles_zones;
   }
 
@@ -59,9 +66,22 @@ export class BenevoleZoneService {
 
     const benevoles = await this.prisma.benevole_Zone.findMany({
       where: {
-        debut: date_debut,
-        fin: date_fin,
+        OR: [
+          {
+            debut: {
+              gte: date_debut,
+              lte: date_fin,
+            },
+          },
+          {
+            fin: {
+              gte: date_debut,
+              lte: date_fin,
+            },
+          },
+        ],
       },
+
       select: {
         benevole: true,
         zone: true,
@@ -81,6 +101,8 @@ export class BenevoleZoneService {
       select: {
         benevole: true,
         zone: true,
+        debut: true,
+        fin: true,
       },
     });
 
