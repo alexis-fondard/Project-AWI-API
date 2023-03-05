@@ -115,7 +115,7 @@ export class BenevoleZoneService {
         id_benevole_label_zone_debut: {
           id_benevole: Number(dto.benevole.id),
           label_zone: dto.zone.label,
-          debut: dto.date_debut,
+          debut: new Date(dto.date_debut),
         },
       },
     });

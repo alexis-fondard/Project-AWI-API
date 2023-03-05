@@ -40,6 +40,7 @@ export class BenevoleZoneController {
 
   @Delete('delete')
   deleteAffecationOfABenevole(@Body() dto: BenevoleZoneDTO) {
+    console.log(dto)
     return this.benevoleZoneService.deleteAffecationOfABenevole(dto);
   }
 
