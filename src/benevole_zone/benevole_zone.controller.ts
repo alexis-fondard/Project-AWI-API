@@ -38,18 +38,20 @@ export class BenevoleZoneController {
     return this.benevoleZoneService.getAllBenevolesCreneauOfZone(zone);
   }
 
-  @Delete('delete')
+  @Delete('')
   deleteAffecationOfABenevole(@Body() dto: BenevoleZoneDTO) {
-    console.log(dto)
+    console.log(new Date(dto.date_debut))
+    console.log(new Date(dto.date_fin))
     return this.benevoleZoneService.deleteAffecationOfABenevole(dto);
   }
 
-  @Post('create')
+  @Post('')
   createAffecationOfABenevole(@Body() dto: BenevoleZoneDTO) {
     return this.benevoleZoneService.createAffecationOfABenevole(dto);
   }
 
-  @Put(':timestamp/update')
+  //TODO: Refaire correctement en prenant en compte la vérification du créneau (libre ou non)
+  @Put(':timestamp')
   updateOne(@Param('timestamp') timestamp: number, @Body() dto: BenevoleZoneDTO) {
     return this.benevoleZoneService.updateOne(timestamp,dto);
   }

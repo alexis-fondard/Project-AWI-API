@@ -85,6 +85,8 @@ export class BenevoleZoneService {
       select: {
         benevole: true,
         zone: true,
+        debut: true,
+        fin: true,
       },
     });
 
@@ -110,6 +112,10 @@ export class BenevoleZoneService {
   }
 
   async deleteAffecationOfABenevole(dto: BenevoleZoneDTO) {
+    console.log(dto.benevole.id);
+    console.log(dto.zone.label);
+    console.log(dto.date_debut);
+    console.log(new Date(dto.date_debut));
     const benevole_Zone = await this.prisma.benevole_Zone.delete({
       where: {
         id_benevole_label_zone_debut: {

@@ -9,7 +9,7 @@ import { BenevoleDto } from './dto';
 export class BenevoleController{
     constructor(private benevoleService: BenevoleService){}
 
-    @Post('create')
+    @Post('')
     create(@Body() dto : BenevoleDto){
         return this.benevoleService.create(dto);
     }
@@ -24,12 +24,12 @@ export class BenevoleController{
         return this.benevoleService.findOne(id)
     }
 
-    @Put(':id/update')
+    @Put(':id')
     update(@Param('id') id: number, @Body() dto : BenevoleDto){
         return this.benevoleService.updateOne(id,dto);
     }
 
-    @Delete(':id/delete')
+    @Delete(':id')
     delete(@Param('id') id: number){
         return this.benevoleService.deleteOne(id);
     }

@@ -8,7 +8,7 @@ import { ZoneDto } from './dto';
 export class ZoneController{
   constructor(private zoneService: ZoneService){}
 
-    @Post('create')
+    @Post('')
     create(@Body() dto : ZoneDto){
         return this.zoneService.create(dto);
     }
@@ -23,12 +23,12 @@ export class ZoneController{
         return this.zoneService.findOne(label)
     }
 
-    @Put(':label/update')
+    @Put(':label')
     update(@Param('label') past_label: string, @Body() dto : ZoneDto){
         return this.zoneService.updateOne(past_label,dto);
     }
 
-    @Delete(':id/delete')
+    @Delete(':label')
     delete(@Param('label') label: string){
         return this.zoneService.deleteOne(label);
     }
