@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, ParseIntPipe, Post, Get, Req, Put, Param, Delete } from '@nestjs/common';
-import { Request } from 'express';
+import { Body, Controller, Post, Get, Put, Param, Delete } from '@nestjs/common';
 import { BenevoleService } from './benevole.service';
 import { BenevoleDto } from './dto';
 
