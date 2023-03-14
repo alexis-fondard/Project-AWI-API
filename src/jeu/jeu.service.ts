@@ -35,6 +35,7 @@ export class JeuService {
                 id: Number(id),
             },
         });
+        return jeu;
     }
 
     async updateOne(id: number, dto: JeuDto) {
@@ -56,6 +57,7 @@ export class JeuService {
                 },
             },
         });
+        return jeu;
     }
 
     async deleteOne(id: number) {
@@ -65,6 +67,7 @@ export class JeuService {
                     id: Number(id),
                 },
             });
+            return jeu;
         } catch (error) {
             if (error instanceof PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {

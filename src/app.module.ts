@@ -6,6 +6,8 @@ import { BenevoleModule } from './benevole/benevole.module';
 import { JeuModule } from './jeu/jeu.module';
 import { ZoneModule } from './zone/zone.module';
 import { BenevoleZoneModule } from './benevole_zone/benevole_zone.module';
+import { TypeJeuModule } from './type_jeu/type_jeu.module';
+import { JeuZoneModule } from './jeu_zone/jeu_zone.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { BenevoleZoneModule } from './benevole_zone/benevole_zone.module';
     JeuModule,
     ZoneModule,
     BenevoleZoneModule,
+    TypeJeuModule,
+    JeuZoneModule
   ],
 })
 export class AppModule {}

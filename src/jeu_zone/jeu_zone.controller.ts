@@ -28,13 +28,13 @@ export class JeuZoneController {
     return this.jeuZoneService.getAllZonesOfAJeux(id);
   }
 
-  @Delete('delete')
+  @Delete('')
   deleteAffecationOfAJeu(@Body() dto: JeuZoneDTO) {
     console.log(dto)
     return this.jeuZoneService.deleteAffectationOfAJeu(dto);
   }
 
-  @Post('create')
+  @Post('')
   createAffecationOfAJeu(@Body() dto: JeuZoneDTO) {
     return this.jeuZoneService.createAffectationOfAJeu(dto);
   }

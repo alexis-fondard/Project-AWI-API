@@ -27,6 +27,7 @@ export class TypeJeuService {
         label: label,
       },
     });
+    return typeJeu;
   }
 
   async updateOne(label: string, dto: TypeJeuDto) {

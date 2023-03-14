@@ -4,11 +4,11 @@ import { JeuDto } from "./dto";
 import { Body, Delete, Get, Param, Post, Put } from "@nestjs/common";
 
 
-@Controller('jeu')
+@Controller('jeux')
 export class JeuController {
     constructor(private jeuService: JeuService) { }
 
-    @Post('create')
+    @Post('')
     create(@Body() dto: JeuDto) {
         return this.jeuService.create(dto);
     }
@@ -23,12 +23,12 @@ export class JeuController {
         return this.jeuService.findOne(id);
     }
 
-    @Put(':id/update')
+    @Put(':id')
     update(@Param('id') id: number, @Body() dto: JeuDto) {
         return this.jeuService.updateOne(id, dto);
     }
 
-    @Delete(':id/delete')
+    @Delete(':id')
     delete(@Param('id') id: number) {
         return this.jeuService.deleteOne(id);
     }

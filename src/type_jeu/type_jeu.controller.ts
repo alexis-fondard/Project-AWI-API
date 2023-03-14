@@ -9,7 +9,7 @@ import { TypeJeuDto } from './dto';
 export class TypeJeuController{
     constructor(private typeJeuService: TypeJeuService){}
 
-    @Post('create')
+    @Post('')
     create(@Body() dto : TypeJeuDto){
         return this.typeJeuService.create(dto);
     }
@@ -24,12 +24,12 @@ export class TypeJeuController{
         return this.typeJeuService.findOne(label)
     }
 
-    @Put('update/:label')
+    @Put(':label')
     update(@Param('label') label: string, @Body() dto : TypeJeuDto){
         return this.typeJeuService.updateOne(label, dto);
     }
 
-    @Delete(':label/delete')
+    @Delete(':label')
     delete(@Param('label') label: string){
         return this.typeJeuService.deleteOne(label);
     }
