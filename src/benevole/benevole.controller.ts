@@ -10,7 +10,8 @@ export class BenevoleController{
 
     @Post('')
     create(@Body() dto : BenevoleDto){
-        return this.benevoleService.create(dto);
+        return 'this function is not used anymore'
+        // return this.benevoleService.create(dto);
     }
 
     @Get('')

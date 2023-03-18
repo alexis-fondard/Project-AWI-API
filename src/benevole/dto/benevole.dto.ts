@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsEmail, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 
 
@@ -19,5 +19,13 @@ export class BenevoleDto {
     @IsEmail()
     @IsNotEmpty()
     email: string;
+
+    @IsString()
+    @IsNotEmpty()
+    mdp: string;
+
+    @IsBoolean()
+    @IsNotEmpty()
+    isAdmin: boolean;
     
 }
