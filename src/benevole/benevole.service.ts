@@ -15,6 +15,8 @@ export class BenevoleService {
           prenom: dto.prenom,
           nom: dto.nom,
           email: dto.email,
+          mdp: '123', //A CHANGER
+          isAdmin: true, //A CHANGER
         },
       });
       //return to user the saved benevole
