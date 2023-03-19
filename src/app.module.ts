@@ -9,6 +9,11 @@ import { BenevoleZoneModule } from './benevole_zone/benevole_zone.module';
 import { TypeJeuModule } from './type_jeu/type_jeu.module';
 import { JeuZoneModule } from './jeu_zone/jeu_zone.module';
 import { AuthMobileModule } from './authMobile/auth.module';
+import { FestivalModule } from './festival/festival.module';
+import { JourModule } from './jour/jour.module';
+import { CreneauModule } from './creneau/creneau.module';
+import { FestivalZoneModule } from './festival_zone/festival_zone.module';
+import { AffectationCreneauModule } from './affectation_creneau/affectation_creneau.module';
 
 @Module({
   imports: [
@@ -23,7 +28,12 @@ import { AuthMobileModule } from './authMobile/auth.module';
     ZoneModule,
     BenevoleZoneModule,
     TypeJeuModule,
-    JeuZoneModule
+    JeuZoneModule,
+    FestivalModule,
+    JourModule,
+    CreneauModule,
+    FestivalZoneModule,
+    AffectationCreneauModule
   ],
 })
 export class AppModule {}

@@ -99,7 +99,6 @@ model Zone {
   benevoles Benevole_Zone[]
   jeu Jeu_Zone[]
   festival FestivalZone[]
-  affectationCreneau AffectationCreneau[]
 
   @@map("zones")
 }
@@ -108,29 +107,35 @@ model Festival {
   id Int @id @default(autoincrement())
   nom String
   annee Int
-  estActif Boolean
+  isActive Boolean
 
   zone FestivalZone[]
-  jours FestivalJour[]
+  jours Jour[]
 
   @@map("festivals")
 }
 
 
 model FestivalZone {
+  id_festivalZone Int @id @default(autoincrement())
+
   festival Festival @relation(fields: [id_festival], references: [id])
   id_festival Int
   zone Zone @relation(fields: [label_zone], references: [label])
   label_zone String 
 
+  nbBenevolesNecessaires Int
 
-  @@id([id_festival,label_zone])
+  affectations AffectationCreneau[]
 
   @@map("festival_zone")
 }
 
 model Jour {
   id Int @id @default(autoincrement())
+  festival Festival @relation(fields: [id_festival], references: [id])
+  id_festival Int
+
   date DateTime
   nom String
   heureOuverture Int
@@ -138,58 +143,37 @@ model Jour {
   heureFermeture Int
   minuteFermeture Int
 
-  festival FestivalJour[]
-  creneau CreneauJour[]
+  creneaux Creneau[]
 
   @@map("jours")
 }
 
 
-model FestivalJour {
-  festival Festival @relation(fields: [id_festival], references: [id])
-  id_festival Int
-  jour Jour @relation(fields: [id_jour], references: [id])
-  id_jour Int  
-
-
-  @@id([id_festival,id_jour])
-
-  @@map("festival_jour")
-}
-
 model Creneau {
   id Int @id @default(autoincrement())
+  jour Jour @relation(fields: [id_jour], references: [id])
+  id_jour Int 
+
   heureDebut Int
   minuteDebut Int
   heureFin Int
   minuteFin Int
 
-  jour CreneauJour[]
   affectationCreneau AffectationCreneau[]
 
   @@map("creneaux")
 }
 
-model CreneauJour {
-  creneau Creneau @relation(fields: [id_creneau], references: [id])
-  id_creneau Int
-  jour Jour @relation(fields: [id_jour], references: [id])
-  id_jour Int  
-
-  @@id([id_creneau,id_jour])
-
-  @@map("creneau_jour")
-}
 
 model AffectationCreneau {
   creneau Creneau @relation(fields: [id_creneau], references: [id])
   id_creneau Int
   benevole Benevole @relation(fields: [id_benevole], references: [id])
   id_benevole Int  
-  zone Zone @relation(fields: [label_zone], references: [label])
-  label_zone String
+  festivalZone FestivalZone @relation(fields: [id_festivalZone], references: [id_festivalZone])
+  id_festivalZone Int
 
-  @@id([id_creneau,id_benevole,label_zone])
+  @@id([id_creneau,id_benevole,id_festivalZone])
 
   @@map("affectationCreneau")
 }
