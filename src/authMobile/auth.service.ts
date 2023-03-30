@@ -32,7 +32,9 @@ export class AuthMobileService {
                 
             }) 
             //return to user the saved user
-            return this.signToken(benevole.id,benevole.email)
+            // return this.signToken(benevole.id,benevole.email)
+            delete benevole.mdp
+            return benevole
         }catch(error){
             if(error instanceof PrismaClientKnownRequestError){
                 if(error.code === 'P2002'){
