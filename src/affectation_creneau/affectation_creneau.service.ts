@@ -36,13 +36,12 @@ export class AffectationCreneauService {
     return affectation_creneaux;
   }
 
-  async findOne(id_creneau: number, id_benevole: number, id_festivalZone: number) {
+  async findOne(id_creneau: number, id_benevole: number) {
     //TODO: TRY CATCH (RIGHT ERROR)
     const affectation_creneau = await this.prisma.affectationCreneau.findFirst({
       where: {
         id_creneau: Number(id_creneau),
-        id_benevole: Number(id_benevole),
-        id_festivalZone: Number(id_festivalZone),
+        id_benevole: Number(id_benevole)
       },
       select: {
         creneau:true,
@@ -54,7 +53,7 @@ export class AffectationCreneauService {
     return affectation_creneau;
   }
 
-  async updateOne(id_creneau: number, id_benevole: number, id_festivalZone: number, dto: AffectationCreneauDto) {
+  async updateOne(id_creneau: number, id_benevole: number, dto: AffectationCreneauDto) {
     //TODO: TRY CATCH (RIGHT ERROR)
 
     const donnee = {
@@ -65,10 +64,9 @@ export class AffectationCreneauService {
 
     const affectation_creneau = await this.prisma.affectationCreneau.update({
       where: {
-        id_creneau_id_benevole_id_festivalZone:{
+        id_creneau_id_benevole:{
           id_creneau: Number(id_creneau),
           id_benevole: Number(id_benevole),
-          id_festivalZone: Number(id_festivalZone),
         }
       },
       data: donnee,
@@ -82,14 +80,13 @@ export class AffectationCreneauService {
     return affectation_creneau;
   }
 
-  async deleteOne(id_creneau: number, id_benevole: number, id_festivalZone: number) {
+  async deleteOne(id_creneau: number, id_benevole: number) {
     //TODO: TRY CATCH (RIGHT ERROR)
     const affectation_creneau = await this.prisma.affectationCreneau.delete({
       where: {
-        id_creneau_id_benevole_id_festivalZone:{
+        id_creneau_id_benevole:{
           id_creneau: Number(id_creneau),
-          id_benevole: Number(id_benevole),
-          id_festivalZone: Number(id_festivalZone),
+          id_benevole: Number(id_benevole)
         }
       },
       select: {

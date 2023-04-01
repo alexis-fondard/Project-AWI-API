@@ -17,19 +17,19 @@ export class AffectationCreneauController{
         return this.affectationCreneauService.findAll();
     }
 
-    @Get(':id_creneau&:id_benevole&:id_festivalZone')
-    find(@Param('id_creneau') id_creneau: number, @Param('id_benevole') id_benevole: number, @Param('id_festivalZone') id_festivalZone: number){
-        return this.affectationCreneauService.findOne(id_creneau,id_benevole,id_festivalZone)
+    @Get(':id_creneau&:id_benevole')
+    find(@Param('id_creneau') id_creneau: number, @Param('id_benevole') id_benevole: number){
+        return this.affectationCreneauService.findOne(id_creneau,id_benevole)
     }
 
-    @Put(':id_creneau&:id_benevole&:id_festivalZone')
-    update(@Param('id_creneau') id_creneau: number, @Param('id_benevole') id_benevole: number, @Param('id_festivalZone') id_festivalZone: number, @Body() dto : AffectationCreneauDto){
-        return this.affectationCreneauService.updateOne(id_creneau,id_benevole,id_festivalZone,dto);
+    @Put(':id_creneau&:id_benevole')
+    update(@Param('id_creneau') id_creneau: number, @Param('id_benevole') id_benevole: number, @Body() dto : AffectationCreneauDto){
+        return this.affectationCreneauService.updateOne(id_creneau,id_benevole,dto);
     }
 
-    @Delete(':id_creneau&:id_benevole&:id_festivalZone')
-    delete(@Param('id_creneau') id_creneau: number, @Param('id_benevole') id_benevole: number, @Param('id_festivalZone') id_festivalZone: number,){
-        return this.affectationCreneauService.deleteOne(id_creneau,id_benevole,id_festivalZone);
+    @Delete(':id_creneau&:id_benevole')
+    delete(@Param('id_creneau') id_creneau: number, @Param('id_benevole') id_benevole: number){
+        return this.affectationCreneauService.deleteOne(id_creneau,id_benevole);
     }
 
     @Get('/benevole/:id')

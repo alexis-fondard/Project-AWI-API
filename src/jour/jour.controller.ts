@@ -36,5 +36,15 @@ export class JourController{
     findAllJoursOfOneFestival(@Param('id') id: number){
         return this.jourService.findAllJoursOfOneFestival(id);
     }
+
+    @Get('/getFestivalName/:id')
+    findFestivalCorrespondingOfJour(@Param('id') id: number){
+        return this.jourService.findFestivalCorrespondingOfJour(id)
+    }
+
+    @Get('/getDateByJourId/:id')
+    findCorrespondingDateOfJour(@Param('id') id: number){
+        return this.jourService.findCorrespondingDateOfJour(id);
+    }
     
 }

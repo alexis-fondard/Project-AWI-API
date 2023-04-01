@@ -82,4 +82,25 @@ export class JourService {
     });
     return jours;
   }
+
+  async findFestivalCorrespondingOfJour(id: number) {
+    const idToUse = Number(id);
+    const festivals = await this.prisma
+      .$queryRaw`SELECT festivals.nom FROM festivals, jours WHERE festivals.id = jours.id_festival AND jours.id = ${idToUse}`;
+
+    return festivals;
+  }
+
+  async findCorrespondingDateOfJour(id: number) {
+    const jour = this.prisma.jour.findFirst({
+      where: {
+        id: Number(id),
+      },
+      select: {
+        date: true,
+      },
+    });
+
+    return jour;
+  }
 }

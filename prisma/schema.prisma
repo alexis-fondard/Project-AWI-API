@@ -132,8 +132,8 @@ model FestivalZone {
 }
 
 model Jour {
-  id Int @id @default(autoincrement())
-  festival Festival @relation(fields: [id_festival], references: [id])
+  id Int @unique @default(autoincrement())
+  festival Festival  @relation(fields: [id_festival], references: [id])
   id_festival Int
 
   date DateTime
@@ -143,6 +143,8 @@ model Jour {
   heureFermeture Int
   minuteFermeture Int
 
+  @@id([id_festival,date])
+
   creneaux Creneau[]
 
   @@map("jours")
@@ -150,7 +152,7 @@ model Jour {
 
 
 model Creneau {
-  id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement()) 
   jour Jour @relation(fields: [id_jour], references: [id])
   id_jour Int 
 
@@ -167,13 +169,13 @@ model Creneau {
 
 model AffectationCreneau {
   creneau Creneau @relation(fields: [id_creneau], references: [id])
-  id_creneau Int
+  id_creneau Int 
   benevole Benevole @relation(fields: [id_benevole], references: [id])
-  id_benevole Int  
+  id_benevole Int 
   festivalZone FestivalZone @relation(fields: [id_festivalZone], references: [id_festivalZone])
   id_festivalZone Int
 
-  @@id([id_creneau,id_benevole,id_festivalZone])
+  @@id([id_creneau,id_benevole])
 
   @@map("affectationCreneau")
 }
